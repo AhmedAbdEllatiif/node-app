@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.jso([
+  res.json([
     {
       "id":"1",
       "title":"Book Review: The Bear & The Nightingale"
@@ -22,6 +22,6 @@ app.get('/', (req, res) => {
   ])
 })
 
-app.listen(4000, () => {
+app.lisen(4000, () => {
   console.log('listening for requests on port 4000')
 })
