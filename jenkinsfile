@@ -33,4 +33,13 @@ pipeline {
             }
         }
     }
+      post {
+        success {
+            echo 'Build successful! You can add more post-build actions here.'
+        }
+        
+        failure {
+            echo 'Build failed. Please check the logs for details.'
+        }
+    }
 }
