@@ -1,45 +1,41 @@
 pipeline {
+
+    // agent node
     agent { 
         node {
             label 'node-2'
             }
       }
-    // triggers {
-    //     pollSCM '*/5 * * * *'
-    // }
-    stages {
-        stage('Build') {
-            steps {
-                echo "Building.."
-                sh '''
-                    npm install 
-                '''
-            }
+   
+        // build stage 
+        stages {
+            stage('Build') {
+                steps {
+                    echo "Building.."
+                    sh '''
+                        npm install 
+                    '''
+                }
         }
-        stage('Run ') {
+
+        // run stage
+        stage('Run') {
             steps {
                 echo "Run.."
-                sh '''
-                    node app.js & sleep 1
-                    echo $! > .pidfile
-                    kill $(cat .pidfile)
-                '''
+                sh 'node app.js & sleep 1'
+                sh 'echo $! > .pidfile'
+                sh 'kill $(cat .pidfile)'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         echo 'Deliver....'
-        //         sh '''
-        //             curl localhost:400
-        //         '''
-        //     }
-        // }
     }
-      post {
+
+
+    // post
+    post {
         success {
-            echo 'Build successful! You can add more post-build actions here.'
+            echo 'Build successful!'
         }
-        
+    
         failure {
             echo 'Build failed. Please check the logs for details.'
         }
