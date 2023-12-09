@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                    npm app.js
+                    node app.js
                 '''
             }
         }
