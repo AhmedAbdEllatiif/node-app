@@ -1,11 +1,13 @@
 pipeline {
 
     // agent node
-    agent { 
-        node {
-            label 'node-2'
-            }
-      }
+    // agent { 
+    //     node {
+    //         label 'node-2'
+    //         }
+    //   }
+
+    agent any
    
         // build stage 
         stages {
@@ -32,7 +34,7 @@ pipeline {
          // run stage
         stage('Build Docker Image') {
             steps {
-                sh ' docker build -t ahmedmohamed1993/node-web-app:3 . '
+                sh 'docker build -t ahmedmohamed1993/node-web-app:3 . '
             }
         }
     }
