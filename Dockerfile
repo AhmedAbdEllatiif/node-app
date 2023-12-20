@@ -1,5 +1,5 @@
 # install the parent image
-FROM  arm64v8/node
+FROM  node
 
 # cd to the app directory 
 WORKDIR /app
